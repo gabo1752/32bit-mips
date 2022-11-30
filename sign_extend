@@ -1,0 +1,46 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000261e74878b0 .scope module, "sign_extend_tb" "sign_extend_tb" 2 4;
+ .timescale -9 -9;
+v00000261e77264f0_0 .var "extend", 15 0;
+v00000261e7726590_0 .net "extended", 31 0, L_00000261e748aec0;  1 drivers
+S_00000261e77262c0 .scope module, "dut" "sign_extend" 2 8, 3 1 0, S_00000261e74878b0;
+ .timescale -9 -9;
+    .port_info 0 /INPUT 2 "ImmSrc";
+    .port_info 1 /INPUT 16 "extend";
+    .port_info 2 /OUTPUT 32 "extended";
+o00000261e7726fd8 .functor BUFZ 2, C4<zz>; HiZ drive
+v00000261e76f2d00_0 .net "ImmSrc", 1 0, o00000261e7726fd8;  0 drivers
+v00000261e76f2930_0 .net *"_ivl_1", 0 0, L_00000261e7726630;  1 drivers
+v00000261e7487c20_0 .net *"_ivl_2", 15 0, L_00000261e748a9e0;  1 drivers
+v00000261e7487a40_0 .net "extend", 15 0, v00000261e77264f0_0;  1 drivers
+v00000261e7726450_0 .net "extended", 31 0, L_00000261e748aec0;  alias, 1 drivers
+L_00000261e7726630 .part v00000261e77264f0_0, 15, 1;
+LS_00000261e748a9e0_0_0 .concat [ 1 1 1 1], L_00000261e7726630, L_00000261e7726630, L_00000261e7726630, L_00000261e7726630;
+LS_00000261e748a9e0_0_4 .concat [ 1 1 1 1], L_00000261e7726630, L_00000261e7726630, L_00000261e7726630, L_00000261e7726630;
+LS_00000261e748a9e0_0_8 .concat [ 1 1 1 1], L_00000261e7726630, L_00000261e7726630, L_00000261e7726630, L_00000261e7726630;
+LS_00000261e748a9e0_0_12 .concat [ 1 1 1 1], L_00000261e7726630, L_00000261e7726630, L_00000261e7726630, L_00000261e7726630;
+L_00000261e748a9e0 .concat [ 4 4 4 4], LS_00000261e748a9e0_0_0, LS_00000261e748a9e0_0_4, LS_00000261e748a9e0_0_8, LS_00000261e748a9e0_0_12;
+L_00000261e748aec0 .concat [ 16 16 0 0], v00000261e77264f0_0, L_00000261e748a9e0;
+    .scope S_00000261e74878b0;
+T_0 ;
+    %vpi_call 2 15 "$monitor", "t = %0d, extend = %0b, extended = %0b", $time, v00000261e77264f0_0, v00000261e7726590_0 {0 0 0};
+    %pushi/vec4 62004, 0, 16;
+    %store/vec4 v00000261e77264f0_0, 0, 16;
+    %delay 5, 0;
+    %vpi_call 2 17 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "sign_extend_tb.v";
+    "./sign_extend.v";
