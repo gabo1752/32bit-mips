@@ -36,6 +36,7 @@ assign next_PC = PCSrc ? PCBranch : PCPlus4;
 assign WriteReg = RegDst ? Instr [15:11] : Instr [20:16];
 assign SrcB = ALUSrc ? SignImm : WriteData;
 assign Result = MemtoReg ? ReadData : ALUResult;
+
 PC pc (
     .PC_Next(next_PC),
     .CLK (CLK),
