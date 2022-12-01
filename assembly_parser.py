@@ -9,11 +9,19 @@ import os
 if len(sys.argv) > 2:
     raise IndexError("Expecting only one argument. Can only assemble one script at a time.")
 
-if ~(os.path.exists(sys.argv[1])):
-    raise NameError("File provided does not exist.")
+if (os.path.exists(sys.argv[1]) == False):
+    raise NameError("Provided path does not exist.")
 else:
     filename = sys.argv[1]
 
+file = open(filename, "r")
+instructions = file.readlines()
+print(instructions)
+for line in instructions:
+    line = line.split(",")
+    
+    
+file.close()
 
 # add instruction dictionary
 # register map
